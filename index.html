@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Generador de números de TC</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/my-styles.css">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700" rel="stylesheet">
+	</head>
+
+	<body ng-controller="controller">
+
+		<div class="square">
+			<h1 class="light">Generador De <font class="bold">TC</font></h1>
+		</div>
+
+		<br/>
+
+		<h2 class="main-font light">Generador de números de tarjeta de crédito</h2>
+
+		<form>
+
+			<div class="form-group form">
+				<label class="light" for="tcs">Seleccione un tipo de tarjeta</label>
+
+				<div clas="col-md-12">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+
+						<select id="cardTypeSelect" ng-model="codeCardTypeSelected" class="form-control select">
+							<option ng-repeat="cardType in cardTypes" value="{{cardType.CodeCardType}}">
+								{{cardType.CardTypeDescription}}
+							</option>
+						</select>
+
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+
+			</div>
+
+			<br/>
+
+			<div class="form-group form">
+
+				<div clas="col-md-12">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<button ng-click="generateCardNumber()" class="form-control btn btn-danger">
+							Generar
+						</button>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+
+			</div>
+		
+		</form>
+
+		<br/>
+
+		<div id="result" class="form-group form">
+			<label class="light">Número de tarjeta generado</label>
+			<br/>
+			<label id="cardNumber" class="light">{{cardNumber}}</label>
+		</div>
+
+		<script src="js/angular.min.js"></script>
+		<script src="js/services.js"></script>
+		<script src="js/controller.js"></script>
+	</body>
+
+</html>
