@@ -14,17 +14,35 @@ function removeDummyOption() {
 
 	app.controller("controller", ["$scope", "$http", "cardGeneratorService", function(model, http, cardGeneratorService) {
 
-		cardGeneratorService.loadCardTypesByCode(model);
+		try {
 
-		model.generateCardNumber = function() {
-			if (model.codeCardTypeSelected == undefined) model.codeCardTypeSelected = 1;
+			cardGeneratorService.loadCardTypesByCode(model);
 
-			cardGeneratorService.generateCardNumberByCode(model.codeCardTypeSelected, model);
+			angular.element(document).ready(function() {
+				removeDummyOption();
+			});
+
 		}
 
-		angular.element(document).ready(function() {
-			removeDummyOption();
-		});
+		catch(exception) {
+			alert("Error al cargar las tarjetas");
+			console.log(exception.name + ": " + exception.message);
+		}
+
+		model.generateCardNumber = function() {
+			try {
+
+				if (model.codeCardTypeSelected == undefined) model.codeCardTypeSelected = 1;
+
+				cardGeneratorService.generateCardNumberByCode(model.codeCardTypeSelected, model);
+
+			}
+
+			catch(exception) {
+				alert("Error al generar el número de tarjeta");
+				console.log(exception.name + ": " + exception.message);
+			}
+		}
 
 	}]);
 })();

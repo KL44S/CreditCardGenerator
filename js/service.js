@@ -1,9 +1,70 @@
+
+
 (function() {
 var app = angular.module("myApp");
 
 	app.factory("cardGeneratorService", ["$http", function(http) {
 
 		var cardGeneratorService = {};
+
+		cardGeneratorService.shouldCodeCardGenerateByLuhnAlgorithm = function(codeCard) {
+			var cardsToGenerateByLuhnAlgorithm = [5, 8, 9, 10];
+			var result = false
+
+			cardsToGenerateByLuhnAlgorithm.forEach(function(currentValue) {
+				if (currentValue == codeCard) result = true;
+			});
+
+			return result;
+		}
+
+		cardGeneratorService.generateCardNumberByLuhnAlgorithm = function(prefix, len) {
+			var pos = 0;
+			var cardNumber = [];
+			var sum = 0;
+			var final_digit = 0;
+			var t = 0;
+			var len_offset = 0;
+			var issuer;
+			var mastercardPrefix = "5";
+
+			for (i = 0; i < prefix.length; i++) {
+				cardNumber.push(prefix.charAt(i));
+			}
+
+			//Mastercard pura
+			if (prefix == mastercardPrefix || cardNumber.length > 1) {
+				t = Math.floor(Math.random() * 5) % 5;
+				cardNumber.push(1 + t);
+			}
+
+			while (cardNumber.length < len) {
+				cardNumber.push(Math.floor(Math.random() * 10) % 10);
+			}
+
+			len_offset = (len + 1) % 2;
+			for (pos = 0; pos < len - 1; pos++) {
+				if ((pos + len_offset) % 2) {
+					t = cardNumber[pos] * 2;
+					if (t > 9) {
+						t -= 9;
+					}
+					sum += t;
+				}
+				else {
+					sum += cardNumber[pos];
+				}
+			}
+
+			final_digit = (10 - (sum % 10)) % 10;
+			alert(final_digit);
+			cardNumber[len - 1] = final_digit;
+
+			t = cardNumber.join('');
+			t = t.substr(0, len);
+
+			return t;
+		}
 
 		cardGeneratorService.getCardLengths = function() {
 			var cardLengths = {};
@@ -62,14 +123,20 @@ var app = angular.module("myApp");
 			if (prefixes.length > 0) prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
 
 			//Largo a generar
-			var numberLengthToGenerate = cardGeneratorService.getCardLengths()[codeCardTypeSelected] - prefix.length;
+			var cardNumberLenth = cardGeneratorService.getCardLengths()[codeCardTypeSelected];
 
-			for (var i = 0; i < numberLengthToGenerate; i++) {
-				prefix += Math.floor(Math.random() * 9).toString();
+			if (cardGeneratorService.shouldCodeCardGenerateByLuhnAlgorithm(codeCardTypeSelected)) {
+				prefix = cardGeneratorService.generateCardNumberByLuhnAlgorithm(prefix, cardNumberLenth);
+			}
+			else {
+				var numberLengthToGenerate = cardNumberLenth - prefix.length;
+
+				for (var i = 0; i < numberLengthToGenerate; i++) {
+					prefix += Math.floor(Math.random() * 9).toString();
+				}
 			}
 
 			model.cardNumber = prefix;
-
 		};
 
 		cardGeneratorService.loadCardTypesByWebApi = function(model) {
