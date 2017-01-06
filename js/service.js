@@ -57,7 +57,6 @@ var app = angular.module("myApp");
 			}
 
 			final_digit = (10 - (sum % 10)) % 10;
-			alert(final_digit);
 			cardNumber[len - 1] = final_digit;
 
 			t = cardNumber.join('');
