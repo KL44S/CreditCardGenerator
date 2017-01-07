@@ -1,6 +1,8 @@
 body {
 	background-color: #333;
-	padding: 8%;
+	margin: 0pt;
+	padding: 0pt;
+	padding-top: 7%;
 	color: white;
 	font-family: 'Raleway', sans-serif;
 }
@@ -24,6 +26,7 @@ h2 {
 }
 
 .light {
+	text-align: center;
 	font-weight: 300;
 }
 
@@ -33,7 +36,6 @@ h2 {
 	margin-bottom: 3%;
 	border-width: 2pt;
 	padding: 0pt;
-	width: 30%;
 	margin: 0 auto;
 }
 
@@ -48,6 +50,18 @@ h2 {
 	margin-top: -3%;
 	font-weight: 700;
 	border-radius: 0pt;
+}
+
+.top-space-sm {
+	margin-top: 1%;
+}
+
+.top-space-md {
+	margin-top: 7%;
+}
+
+.content-col {
+	padding: 0pt;
 }
 
 .select {
