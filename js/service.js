@@ -19,50 +19,48 @@ var app = angular.module("myApp");
 		}
 
 		cardGeneratorService.generateCardNumberByLuhnAlgorithm = function(prefix, len) {
-			var pos = 0;
+			var position = 0;
 			var cardNumber = [];
 			var sum = 0;
-			var final_digit = 0;
-			var t = 0;
-			var len_offset = 0;
+			var finalDigit = 0;
+			var finalCardNumber = 0;
 			var issuer;
 			var mastercardPrefix = "5";
 
+			//Inserto prefijo
 			for (i = 0; i < prefix.length; i++) {
 				cardNumber.push(prefix.charAt(i));
 			}
 
-			//Mastercard pura
-			if (prefix == mastercardPrefix || cardNumber.length > 1) {
-				t = Math.floor(Math.random() * 5) % 5;
-				cardNumber.push(1 + t);
-			}
-
+			//Relleno con números entre 0 y 9
 			while (cardNumber.length < len) {
 				cardNumber.push(Math.floor(Math.random() * 10) % 10);
 			}
 
-			len_offset = (len + 1) % 2;
-			for (pos = 0; pos < len - 1; pos++) {
-				if ((pos + len_offset) % 2) {
-					t = cardNumber[pos] * 2;
-					if (t > 9) {
-						t -= 9;
+			//Calculo el último dígito verificador
+			var offset = (len + 1) % 2;
+			for (position = 0; position < len - 1; position++) {
+				if ((position + offset) % 2) {
+					finalCardNumber = parseInt(cardNumber[position]) * 2;
+					if (finalCardNumber > 9) {
+						finalCardNumber -= 9;
 					}
-					sum += t;
+					sum += finalCardNumber;
 				}
 				else {
-					sum += cardNumber[pos];
+					sum += parseInt(cardNumber[position]);
 				}
 			}
 
-			final_digit = (10 - (sum % 10)) % 10;
-			cardNumber[len - 1] = final_digit;
+			finalDigit = (10 - (sum % 10)) % 10;
 
-			t = cardNumber.join('');
-			t = t.substr(0, len);
+			cardNumber[len - 1] = finalDigit.toString();
 
-			return t;
+			//Armo tarjeta como string
+			finalCardNumber = cardNumber.join('');
+			finalCardNumber = finalCardNumber.substr(0, len);
+
+			return finalCardNumber;
 		}
 
 		cardGeneratorService.getCardLengths = function() {
