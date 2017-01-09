@@ -18,9 +18,9 @@ function removeDummyOption() {
 
 			cardGeneratorService.loadCardTypesByCode(model);
 
-			angular.element(document).ready(function() {
+			/*angular.element(document).ready(function() {
 				removeDummyOption();
-			});
+			});*/
 
 		}
 
@@ -32,9 +32,8 @@ function removeDummyOption() {
 		model.generateCardNumber = function() {
 			try {
 
-				if (model.codeCardTypeSelected == undefined) model.codeCardTypeSelected = 1;
-
-				cardGeneratorService.generateCardNumberByCode(model.codeCardTypeSelected, model);
+				if (model.codeCardTypeSelected == undefined) alert("Debe seleccionar un tipo de tarjeta!");
+				else cardGeneratorService.generateCardNumberByCode(model.codeCardTypeSelected, model);
 
 			}
 

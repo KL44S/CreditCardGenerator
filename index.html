@@ -17,7 +17,9 @@
 				<div class="col-md-4"></div>
 
 				<div class="square col-md-4 content-col">
-					<h1 class="light">Generador De <font class="bold">TC</font></h1>
+					<h1 class="light">
+						<span class="main-title">Generador</span><span class="text-xs">de</span><span class="bold">TC</span>
+					</h1>
 				</div>
 
 				<div class="col-md-4"></div>
@@ -27,7 +29,7 @@
 			<br/>
 
 			<div class="col-md-12 top-space-sm">
-				<h2 class="main-font light">Generador de números de tarjeta de crédito</h2>
+				<h2 class="main-font light">generador de números de tarjeta de crédito</h2>
 			</div>	
 
 			<form class="col-md-12 top-space-sm">
@@ -37,7 +39,7 @@
 				<div class="col-md-4 content-col">
 
 					<div class="form-group form">
-						<label class="light" for="tcs">Seleccione un tipo de tarjeta</label>
+						<label class="light" for="tcs">seleccione un tipo de tarjeta</label>
 
 						<select id="cardTypeSelect" ng-model="codeCardTypeSelected" class="form-control select">
 							<option ng-repeat="cardType in cardTypes" value="{{cardType.CodeCardType}}">
@@ -64,7 +66,7 @@
 			<br/>
 
 			<div id="result" class="form-group form">
-				<label class="light">Número de tarjeta generado</label>
+				<label class="light">número de tarjeta generado</label>
 				<br/>
 				<label id="cardNumber" class="light">{{cardNumber}}</label>
 			</div>

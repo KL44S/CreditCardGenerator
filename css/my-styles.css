@@ -19,13 +19,20 @@ h2 {
 	color: #EEE7E7;
 }
 
+.main-title {
+	letter-spacing: 2pt;
+}
+
+.text-xs {
+	font-size: 60%;
+}
+
 .bold {
-	font-weight: 700;
+	font-weight: 600;
 }
 
 .light {
-	text-align: center;
-	font-weight: 300;
+	font-weight: 100;
 }
 
 .square {
