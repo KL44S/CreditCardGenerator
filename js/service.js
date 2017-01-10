@@ -1,5 +1,3 @@
-
-
 (function() {
 var app = angular.module("myApp");
 
@@ -97,7 +95,7 @@ var app = angular.module("myApp");
 	    	return cardPrefixes;
 		};
 
-		cardGeneratorService.generateCardNumberByWebApi = function(codeCardTypeSelected, model) {
+		/*cardGeneratorService.generateCardNumberByWebApi = function(codeCardTypeSelected, model) {
 
 			http.get("http://localhost:52683/api/CreditCardNumberGenerator/" + codeCardTypeSelected)
 				.success(function(cardNumber) {
@@ -109,9 +107,9 @@ var app = angular.module("myApp");
 					console.log(error);
 				});
 
-		};
+		};*/
 
-		cardGeneratorService.generateCardNumberByCode = function(codeCardTypeSelected, model) {
+		cardGeneratorService.generateCardNumberByCode = function(codeCardTypeSelected) {
 
 			//Prefijo
 			var prefixes = cardGeneratorService.getPrefixes()[codeCardTypeSelected];
@@ -133,10 +131,10 @@ var app = angular.module("myApp");
 				}
 			}
 
-			model.cardNumber = prefix;
+			return prefix;
 		};
 
-		cardGeneratorService.loadCardTypesByWebApi = function(model) {
+		/*cardGeneratorService.loadCardTypesByWebApi = function(model) {
 			model.cardTypes = [];
 
 			http.get("http://localhost:52683/api/CardType")
@@ -147,10 +145,10 @@ var app = angular.module("myApp");
 					alert("Error al cargar las tarjetas");
 					console.log(error);
 				});
-		};
+		};*/
 
-		cardGeneratorService.loadCardTypesByCode = function(model) {
-			model.cardTypes = [
+		cardGeneratorService.loadCardTypesByCode = function() {
+			var cardTypes = [
 			  {
 			    "CodeCardType": 1,
 			    "CardTypeDescription": "CREDITEL"
@@ -188,6 +186,8 @@ var app = angular.module("myApp");
 			    "CardTypeDescription": "VISA INTERNACIONAL-SCOTIABANK"
 			  }
 			];
+
+			return cardTypes;
 
 		};
 
