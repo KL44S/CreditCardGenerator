@@ -1,7 +1,11 @@
 body {
-	background-color: #333;
-	padding-top: 7%;
-	color: white;
+	background-image: url("../images/bk.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #272729;
+	padding-top: 10%;
 	font-family: 'Raleway', sans-serif;
 }
 
@@ -11,12 +15,12 @@ h1, h2, h3, h4 {
 
 h1 {
 	font-size: 250%;
-	color: white;
+	color: #FAF6F6;
 }
 
 h2 {
 	font-size: 150%;
-	color: #EEE7E7;
+	color: #FAF6F6;
 }
 
 .main-title {
@@ -36,7 +40,7 @@ h2 {
 }
 
 .square {
-	border-color: white;
+	border-color: #FAF6F6;
 	border-style: solid;
 	border-width: 2pt;
 }
@@ -44,14 +48,15 @@ h2 {
 .form {
 	margin-top: 2%;
 	text-align: center;
-	color: #EEE7E7;
+	color: #FAF6F6;
 }
 
 .btn-danger {
 	position: relative;
 	margin-top: -3%;
-	font-weight: 700;
+	font-weight: 500;
 	border-radius: 0pt;
+	color: #FAF6F6;
 }
 
 .top-space-sm {
@@ -68,20 +73,17 @@ h2 {
 
 .select {
 	border-radius: 0pt;
-	color: #EEE7E7;
-	background-color: #333;
-	border-color: #EEE7E7;
+	color: #FAF6F6;
+	background-image: url("../images/bk.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #272729;
+	border-color: #FAF6F6;
 }
 
 .select:focus,
 .select:active {
 	border-color: white;
-}
-
-.option {
-	border-color: #EEE7E7;
-}
-
-.option:hover {
-	background-color: #EEE7E7;
 }
