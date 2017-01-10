@@ -1,27 +1,10 @@
-function removeDummyOption() {
-	var selectCards = document.getElementById("cardTypeSelect");
-
-	for (var i = 0; i < selectCards.length; i++) {
-
-		 if (/^\? .* \?$/.test(selectCards.options[i].value.toString()) ) {
-		 	selectCards.remove(i);
-		 }		
-	}
-}
-
 (function() {
 	var app = angular.module("myApp");
 
 	app.controller("controller", ["$scope", "$http", "cardGeneratorService", function(model, http, cardGeneratorService) {
 
 		try {
-
-			cardGeneratorService.loadCardTypesByCode(model);
-
-			/*angular.element(document).ready(function() {
-				removeDummyOption();
-			});*/
-
+			model.cardTypes = cardGeneratorService.loadCardTypesByCode();
 		}
 
 		catch(exception) {
@@ -32,8 +15,14 @@ function removeDummyOption() {
 		model.generateCardNumber = function() {
 			try {
 
-				if (model.codeCardTypeSelected == undefined) alert("Debe seleccionar un tipo de tarjeta!");
-				else cardGeneratorService.generateCardNumberByCode(model.codeCardTypeSelected, model);
+				if (model.codeCardTypeSelected == undefined) {
+					model.cardNumberDescription = "";
+					alert("Debe seleccionar un tipo de tarjeta!");
+				}
+				else {
+					model.cardNumber = cardGeneratorService.generateCardNumberByCode(model.codeCardTypeSelected);
+					model.cardNumberDescription = "número de tarjeta generado";
+				}
 
 			}
 

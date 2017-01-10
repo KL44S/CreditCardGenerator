@@ -38,10 +38,7 @@ h2 {
 .square {
 	border-color: white;
 	border-style: solid;
-	margin-bottom: 3%;
 	border-width: 2pt;
-	padding: 0pt;
-	margin: 0 auto;
 }
 
 .form {

@@ -16,7 +16,7 @@
 			<div class="col-md-12">
 				<div class="col-md-4"></div>
 
-				<div class="square col-md-4 content-col">
+				<div class="square col-md-4">
 					<h1 class="light">
 						<span class="main-title">Generador</span><span class="text-xs">de</span><span class="bold">TC</span>
 					</h1>
@@ -65,10 +65,12 @@
 
 			<br/>
 
-			<div id="result" class="form-group form">
-				<label class="light">número de tarjeta generado</label>
-				<br/>
-				<label id="cardNumber" class="light">{{cardNumber}}</label>
+			<div class="col-md-12">
+				<div id="result" class="form-group form">
+					<label class="light">{{cardNumberDescription}}</label>
+					<br/>
+					<label id="cardNumber" class="light">{{cardNumber}}</label>
+				</div>
 			</div>
 
 			<script src="js/angular.min.js"></script>
