@@ -87,3 +87,7 @@ h2 {
 .select:active {
 	border-color: white;
 }
+
+.reduced-bottom {
+	margin-bottom: 3pt;
+}
