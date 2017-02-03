@@ -20,7 +20,7 @@
 					alert("Debe seleccionar un tipo de tarjeta!");
 				}
 				else {
-					model.cardNumber = cardGeneratorService.generateCardNumberByCode(model.codeCardTypeSelected);
+					model.cardNumber = cardGeneratorService.generateCardNumberByCode(model);
 					model.cardNumberDescription = "número de tarjeta generado";
 				}
 

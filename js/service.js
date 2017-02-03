@@ -109,18 +109,19 @@ var app = angular.module("myApp");
 
 		};*/
 
-		cardGeneratorService.generateCardNumberByCode = function(codeCardTypeSelected) {
+		cardGeneratorService.generateCardNumberByCode = function(model) {
 
 			//Prefijo
-			var prefixes = cardGeneratorService.getPrefixes()[codeCardTypeSelected];
+			var prefixes = cardGeneratorService.getPrefixes()[model.codeCardTypeSelected];
 			var prefix = "";
 
-			if (prefixes.length > 0) prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+			if (model.customPrefix != undefined && !isNaN(model.customPrefix.toString())) prefix = model.customPrefix.toString();
+			else if (prefixes.length > 0) prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
 
 			//Largo a generar
-			var cardNumberLenth = cardGeneratorService.getCardLengths()[codeCardTypeSelected];
+			var cardNumberLenth = cardGeneratorService.getCardLengths()[model.codeCardTypeSelected];
 
-			if (cardGeneratorService.shouldCodeCardGenerateByLuhnAlgorithm(codeCardTypeSelected)) {
+			if (cardGeneratorService.shouldCodeCardGenerateByLuhnAlgorithm(model.codeCardTypeSelected)) {
 				prefix = cardGeneratorService.generateCardNumberByLuhnAlgorithm(prefix, cardNumberLenth);
 			}
 			else {

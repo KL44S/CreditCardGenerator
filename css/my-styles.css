@@ -5,7 +5,7 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	background-color: #272729;
-	padding-top: 10%;
+	padding-top: 8%;
 	font-family: 'Raleway', sans-serif;
 }
 
@@ -71,6 +71,20 @@ h2 {
 	padding: 0pt;
 }
 
+.input,
+.select {
+	border-radius: 0pt;
+	color: #FAF6F6;
+	border-color: #FAF6F6;
+}
+
+.input {
+	border-radius: 0pt;
+	background-color: transparent;
+	color: #FAF6F6;
+	border-color: #FAF6F6;
+}
+
 .select {
 	border-radius: 0pt;
 	color: #FAF6F6;
@@ -84,10 +98,16 @@ h2 {
 }
 
 .select:focus,
-.select:active {
+.select:active,
+.input:focus,
+.input:active {
 	border-color: white;
 }
 
 .reduced-bottom {
 	margin-bottom: 3pt;
+}
+
+.inline-label {
+	text-align: left;
 }
