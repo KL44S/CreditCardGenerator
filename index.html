@@ -53,7 +53,7 @@
 		
 						<div class="form-group form">
 							<label class="light" for="customPrefix">prefijo personalizado</label>
-							<input id="customPrefix" type="number" ng-model="customPrefix" class="form-control input">
+							<input id="customPrefix" type="text" minlength="{{customPrefix.minCustomPrefixLength}}" maxlength="{{customPrefix.maxCustomPrefixLength}}" pattern="{{customPrefix.regExp}}" ng-model="customPrefix.value" class="form-control input">
 						</div>
 			
 

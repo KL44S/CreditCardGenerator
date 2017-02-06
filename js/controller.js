@@ -4,6 +4,7 @@
 	app.controller("controller", ["$scope", "$http", "cardGeneratorService", function(model, http, cardGeneratorService) {
 
 		try {
+			model.customPrefix = cardGeneratorService.createCustomPrefix();
 			model.cardTypes = cardGeneratorService.loadCardTypesByCode();
 		}
 

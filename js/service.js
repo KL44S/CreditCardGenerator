@@ -109,27 +109,39 @@ var app = angular.module("myApp");
 
 		};*/
 
+		cardGeneratorService.isValidTheCustomPrefix = function(model) {
+			var isValid = model.customPrefix.value != undefined && !isNaN(model.customPrefix.value.toString());
+			isValid = isValid && model.customPrefix.value.length > model.customPrefix.minCustomPrefixLength;
+			isValid = isValid && model.customPrefix.value.length <= model.customPrefix.maxCustomPrefixLength;
+
+			return isValid;
+		};
+
 		cardGeneratorService.generateCardNumberByCode = function(model) {
 
 			//Prefijo
 			var prefixes = cardGeneratorService.getPrefixes()[model.codeCardTypeSelected];
 			var prefix = "";
 
-			if (model.customPrefix != undefined && !isNaN(model.customPrefix.toString())) prefix = model.customPrefix.toString();
+			if (cardGeneratorService.isValidTheCustomPrefix(model)) prefix = model.customPrefix.value.toString();
 			else if (prefixes.length > 0) prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
 
 			//Largo a generar
 			var cardNumberLenth = cardGeneratorService.getCardLengths()[model.codeCardTypeSelected];
 
-			if (cardGeneratorService.shouldCodeCardGenerateByLuhnAlgorithm(model.codeCardTypeSelected)) {
-				prefix = cardGeneratorService.generateCardNumberByLuhnAlgorithm(prefix, cardNumberLenth);
-			}
-			else {
-				var numberLengthToGenerate = cardNumberLenth - prefix.length;
+			if (prefix.length < cardNumberLenth) {
 
-				for (var i = 0; i < numberLengthToGenerate; i++) {
-					prefix += Math.floor(Math.random() * 9).toString();
+				if (cardGeneratorService.shouldCodeCardGenerateByLuhnAlgorithm(model.codeCardTypeSelected)) {
+					prefix = cardGeneratorService.generateCardNumberByLuhnAlgorithm(prefix, cardNumberLenth);
 				}
+				else {
+					var numberLengthToGenerate = cardNumberLenth - prefix.length;
+
+					for (var i = 0; i < numberLengthToGenerate; i++) {
+						prefix += Math.floor(Math.random() * 9).toString();
+					}
+				}
+
 			}
 
 			return prefix;
@@ -147,6 +159,17 @@ var app = angular.module("myApp");
 					console.log(error);
 				});
 		};*/
+
+		cardGeneratorService.createCustomPrefix = function() {
+			var customPrefix = {
+				"maxCustomPrefixLength": 20,
+				"minCustomPrefixLength": 0,
+				"value": "",
+				"regExp": "[0-9].*"
+			};
+
+			return customPrefix;
+		}
 
 		cardGeneratorService.loadCardTypesByCode = function() {
 			var cardTypes = [
