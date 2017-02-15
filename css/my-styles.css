@@ -111,3 +111,7 @@ h2 {
 .inline-label {
 	text-align: left;
 }
+
+.invisible {
+	display: none;
+}

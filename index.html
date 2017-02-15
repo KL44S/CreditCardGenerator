@@ -74,7 +74,7 @@
 			</form>
 
 			<div class="col-md-12">
-				<div id="result" class="form-group form">
+				<div id="result" class="form-group form" ng-class="{invisible: !cardNumberGenerated}">
 					<p class="light reduced-bottom">{{cardNumberDescription}}</p>
 					<p id="cardNumber" class="light">{{cardNumber}}</p>
 				</div>
@@ -82,8 +82,11 @@
 
 			<script src="js/angular.min.js"></script>
 			<script src="js/module.min.js"></script>
-			<script src="js/service.min.js"></script>
-			<script src="js/controller.min.js"></script>
+			<script src="model/creditCardTypeModel.min.js"></script>
+			<script src="model/customPrefixModel.min.js"></script>
+			<script src="model/messagesModel.min.js"></script>
+			<script src="services/service.min.js"></script>
+			<script src="controllers/controller.min.js"></script>
 
 		</div>
 
