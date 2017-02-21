@@ -46,10 +46,18 @@ h2 {
 	border-radius: 4pt;
 }
 
-.form {
-	margin-top: 2%;
+.form,
+#result {
 	text-align: center;
 	color: #FAF6F6;
+}
+
+.form {
+	margin-top: 2%;
+}
+
+#result {
+	margin-top: 1%;
 }
 
 .btn-danger {
