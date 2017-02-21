@@ -43,6 +43,7 @@ h2 {
 	border-color: #FAF6F6;
 	border-style: solid;
 	border-width: 2pt;
+	border-radius: 4pt;
 }
 
 .form {
@@ -55,7 +56,7 @@ h2 {
 	position: relative;
 	margin-top: -3%;
 	font-weight: 500;
-	border-radius: 0pt;
+	border-radius: 1pt;
 	color: #FAF6F6;
 }
 
@@ -79,14 +80,14 @@ h2 {
 }
 
 .input {
-	border-radius: 0pt;
+	border-radius: 1pt;
 	background-color: transparent;
 	color: #FAF6F6;
 	border-color: #FAF6F6;
 }
 
 .select {
-	border-radius: 0pt;
+	border-radius: 1pt;
 	color: #FAF6F6;
 	background-image: url("../images/bk.jpg");
 	background-position: center center;
@@ -114,4 +115,30 @@ h2 {
 
 .invisible {
 	display: none;
+}
+
+.visible {
+	display: block;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-name: show-up;
+}
+
+@keyframes show-up {
+	from {
+		color: transparent;
+		text-shadow: none;
+	}
+	to {
+		text-shadow: none;
+		color: #FAF6F6;
+	}
+	35% {
+		color: #FAF6F6;
+		text-shadow: none;
+	}
+	70% {
+		color: #FAF6F6;
+		text-shadow: 0pt 0pt 5pt white;
+	}
 }
