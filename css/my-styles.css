@@ -199,8 +199,8 @@ ul.select li:hover,
 }
 
 .card-icon-grayscale {
-    filter: grayscale(100%);	 
-	-webkit-filter: grayscale(100%);
+    filter: grayscale(85%);	 
+	-webkit-filter: grayscale(85%);
 	transition:filter 0.1s;
 	-webkit-transition:-webkit-filter 0.3s;
 }
