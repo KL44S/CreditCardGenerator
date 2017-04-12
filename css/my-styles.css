@@ -198,6 +198,18 @@ ul.select li:hover,
     border-radius:15px;
 }
 
+.card-icon-grayscale {
+    filter: grayscale(100%);	 
+	-webkit-filter: grayscale(100%);
+	transition:filter 0.1s;
+	-webkit-transition:-webkit-filter 0.3s;
+}
+
+ul.select li:hover .card-icon {
+	filter: grayscale(0);
+   -webkit-filter: grayscale(0);
+}
+
 @keyframes iluminate {
 	from {
 
