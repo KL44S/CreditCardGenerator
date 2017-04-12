@@ -6,7 +6,8 @@
 				"cardLoadError": "Error al cargar las tarjetas",
 				"noCardSelectedError": "Debe seleccionar un tipo de tarjeta!",
 				"cardNumberDescription": "número de tarjeta generado",
-				"cardNumberGenerateError": "Error al generar el número de tarjeta"
+				"cardNumberGenerateError": "Error al generar el número de tarjeta",
+				"internalError": "Error interno"
 			};
 
 		return messagesModel;

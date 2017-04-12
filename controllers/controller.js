@@ -15,6 +15,9 @@
 			model.customPrefix = customPrefixModel;
 			model.cardNumberDescription = messagesModel.cardNumberDescription;
 			model.cardNumberGenerated = false;
+
+			DefaultCodeCardTypeSelected = 1;
+			model.codeCardTypeSelected = DefaultCodeCardTypeSelected;
 		}
 
 		catch(exception) {
@@ -41,6 +44,18 @@
 				alert(messagesModel.cardNumberGenerateError);
 				console.log(exception.name + ": " + exception.message);
 			}
+		}
+
+		model.selectCardType = function(cardType) {
+			try {
+				model.showDropdownList = !model.showDropdownList;
+				model.codeCardTypeSelected = cardType.CodeCardType;
+			}
+			catch(exception) {
+				alert(messagesModel.internalError);
+				console.log(exception.name + ": " + exception.message);
+			}
+
 		}
 
 	}]);
