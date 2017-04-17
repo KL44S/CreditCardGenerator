@@ -43,7 +43,7 @@
 
 							<label class="light" for="cardTypeSelect">seleccione un tipo de tarjeta</label>
 
-							<div class="select-box" ng-class="{'box-shadow': showDropdownList}">
+							<div class="select-box" ng-class="{'box-shadow': showDropdownList}" ng-cloak>
 
 								<span class="selected" value="{{codeCardTypeSelected}}" ng-click="showDropdownList=!showDropdownList">{{cardTypes[codeCardTypeSelected - 1].CardTypeDescription}}</span>
 
@@ -95,7 +95,7 @@
 			</form>
 
 			<div class="col-md-12">
-				<div id="result" class="form-group" ng-class="{invisible: !cardNumberGenerated, visible: cardNumberGenerated}">
+				<div id="result" class="form-group" ng-class="{invisible: !cardNumberGenerated, visible: cardNumberGenerated}" ng-cloak>
 					<p class="light reduced-bottom">{{cardNumberDescription}}</p>
 					<p id="cardNumber" class="light">{{cardNumber}}</p>
 				</div>
